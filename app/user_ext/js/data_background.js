@@ -6,7 +6,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         (function(response) {
           var xhttp = new XMLHttpRequest();
           xhttp.open("POST", "http://localhost:5000/");
-          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.setRequestHeader("Content-type", "application/json");
           xhttp.onreadystatechange = function() {
             if(xhttp.status == 200 && xhttp.readyState == 4) {
               // Successful response
@@ -16,7 +16,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
           for(var i in response){
             console.log("Index " + i + " contains " + response[i]);
           }
-          xhttp.send('response=' + response);
+          xhttp.send(JSON.stringify(response));
         })(response)
       });
     }
