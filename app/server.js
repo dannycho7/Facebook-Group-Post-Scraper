@@ -10,10 +10,10 @@ const bodyParser = require('body-parser');
 const util = require('util');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.post("*", (req, res) => {
-  let $ = cheerio.load(req.body.response);
-  console.log("Response:", util.inspect(req.body.response));
+  console.log("Response:", req.body);
   res.end();
 });
 
