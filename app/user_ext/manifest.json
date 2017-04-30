@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "fb_scraper",
+  "description": "Scrape facebook data",
+  "version": "1.0",
+
+  "background": {
+    "scripts": ["js/data_background.js"]
+  },
+  "content_scripts": [{
+    "matches": ["*://*.facebook.com/groups/283120708687889*"],
+    "js": ["js/data_content.js"]
+  }],
+
+  "browser_action": {
+    "default_popup": "html/popup.html"
+  },
+
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ]
+}
